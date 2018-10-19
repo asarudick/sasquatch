@@ -1,5 +1,5 @@
 {
-  "name": "codemods",
+  "name": "codemod",
   "version": "1.0.0",
   "description": "",
   "main": "cli.ts",

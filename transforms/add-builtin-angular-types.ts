@@ -17,12 +17,12 @@ export default (sources) => {
           if (!paramType) {
             return;
           }
-
-          param.remove();
-          constructor.addParameter({
-            name,
-            type: paramType
-          });
+          param.setType(paramType);
+          // param.remove();
+          // constructor.addParameter({
+          //   name,
+          //   type: paramType
+          // });
         });
       });
     });
