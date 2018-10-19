@@ -1,6 +1,8 @@
-import Transform from './';
+#!/usr/bin/env ts-node
+import Transformer from './transformer';
 import * as meow from 'meow';
 import * as  glob from 'glob';
+import * as ora from 'ora';
 import chalk from 'chalk';
 
 const cli = meow(`
@@ -14,4 +16,6 @@ if (!files){
   console.log(chalk.red('No files selected.'));
 }
 
-Transform(files);
+const spinner = ora(chalk.green(`Applying transforms to ${files.length} files...`)).start();
+Transformer(files);
+spinner.succeed(`Applied transforms to ${files.length} files!`);

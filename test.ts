@@ -1,5 +1,5 @@
 export class Foo {
-  constructor ($rootScope, $timeout, $window, $q) {
+  constructor ($rootScope: ng.IRootScopeService, $timeout: ng.ITimeoutService, $window: ng.IWindowService, $q: ng.IQService) {
 
   }
 }
