@@ -1,0 +1,12 @@
+node_modules/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+.depfile
+.DS_Store
+npm-debug.log
+.sass-lint.yml
+.cache-loader/
+.prettierrc.js
