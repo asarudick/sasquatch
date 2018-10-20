@@ -18,11 +18,6 @@ export default (sources) => {
             return;
           }
           param.setType(paramType);
-          // param.remove();
-          // constructor.addParameter({
-          //   name,
-          //   type: paramType
-          // });
         });
       });
     });
