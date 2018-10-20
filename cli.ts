@@ -17,5 +17,24 @@ if (!files){
 }
 
 const spinner = ora(chalk.green(`Applying transforms to ${files.length} files...`)).start();
-Transformer(files);
-spinner.succeed(`Applied transforms to ${files.length} files!`);
+let errors = [];
+
+files.forEach((file) => {
+  spinner.text = file;
+
+  try {
+    Transformer(file);
+  }
+  catch (e) {
+    errors.push({file, message: e.message});
+  }
+});
+
+spinner.succeed(chalk.green(`Applied transforms to ${files.length - errors.length} files!`));
+
+if (errors) {
+  console.log(chalk.red(`Error transforming ${errors.length} files:`));
+  errors.forEach((error) => {
+    console.log(chalk.red(`  ${error.file}: ${error.message}`));
+  });
+}
