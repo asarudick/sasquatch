@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2015"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

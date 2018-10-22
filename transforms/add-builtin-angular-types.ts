@@ -1,6 +1,6 @@
 import services from '../data/services';
 
-export default sources => {
+export default (sources, options) => {
   sources.forEach(source => {
     const classes = source.getClasses();
 

@@ -1,19 +1,17 @@
 import { Project } from 'ts-simple-ast';
-import ProjectConfig from './project.config';
-
 import * as Transforms from './transforms';
-import TransformsConfig from './transforms.config';
+import config from './default.config';
 
 export default (
   files: string[],
-  projectConfig = ProjectConfig,
-  transformsConfig = TransformsConfig,
+  options = config.options,
+  transforms = config.transforms,
 ) => {
-  const project = new Project(projectConfig);
+  const project = new Project(options);
 
   const sources = project.addExistingSourceFiles(files);
 
-  for (const transform of transformsConfig.use) {
+  for (const transform of transforms.use) {
     const t = Transforms[transform];
 
     if (!t) {
