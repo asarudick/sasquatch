@@ -1,5 +1,6 @@
 export default {
   use: [
-    'AddBuiltInAngularTypes'
+    'AddBuiltInAngularTypes',
+    'AddBuiltInAngularTypesNgInject'
   ]
 }

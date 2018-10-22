@@ -32,7 +32,7 @@ files.forEach((file) => {
 
 spinner.succeed(chalk.green(`Applied transforms to ${files.length - errors.length} files!`));
 
-if (errors) {
+if (errors.length) {
   console.log(chalk.red(`Error transforming ${errors.length} files:`));
   errors.forEach((error) => {
     console.log(chalk.red(`  ${error.file}: ${error.message}`));

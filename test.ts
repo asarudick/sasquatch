@@ -3,3 +3,9 @@ export class Foo {
 
   }
 }
+
+function Bar (
+  $rootScope: ng.IRootScopeService
+) {
+  'ngInject';
+}

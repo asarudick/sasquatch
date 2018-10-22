@@ -19,7 +19,7 @@ export default {
   "$location": "ng.ILocationService",
   "$log": "ng.ILogService",
   "$parse": "ng.IParseService",
-  "$q": "ng.IQService",
+  // "$q": "ng.IQService",
   "$rootElement": "ng.IRootElementService",
   "$rootScope": "ng.IRootScopeService",
   "$sceDelegate": "ng.ISceDelegateService",
