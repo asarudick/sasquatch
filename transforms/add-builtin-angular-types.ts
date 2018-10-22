@@ -1,16 +1,16 @@
 import services from '../data/services';
 
-export default (sources) => {
-  sources.forEach((source) => {
+export default sources => {
+  sources.forEach(source => {
     const classes = source.getClasses();
 
-    classes.forEach((c) => {
+    classes.forEach(c => {
       const constructors = c.getConstructors();
 
       constructors.forEach((constructor: any) => {
         const params = constructor.getParameters();
 
-        params.forEach((param) => {
+        params.forEach(param => {
           const name = param.getName();
           const paramType = services[name];
 

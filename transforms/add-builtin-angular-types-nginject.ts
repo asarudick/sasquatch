@@ -1,16 +1,16 @@
 import services from '../data/services';
 
-export default (sources) => {
-  sources.forEach((source) => {
+export default sources => {
+  sources.forEach(source => {
     const functions = source.getFunctions();
 
-    functions.forEach((f) => {
+    functions.forEach(f => {
       const body = f.getBody();
       const statements = body.getStatements();
 
       // Find ngInject
-      const hasNgInject = statements.some((statement) => {
-        return statement.getExpression().getText() === '\'ngInject\'';
+      const hasNgInject = statements.some(statement => {
+        return statement.getExpression().getText() === "'ngInject'";
       });
 
       if (!hasNgInject) {
@@ -20,7 +20,7 @@ export default (sources) => {
       // Replace param types if ngInject was found.
       const params = f.getParameters();
 
-      params.forEach((param) => {
+      params.forEach(param => {
         const name = param.getName();
         const paramType = services[name];
 
