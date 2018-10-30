@@ -11,7 +11,7 @@ A configurable code modifier for typescript and friends. Can transform entire co
 
 ## Configuration
 
-By default, all transforms will be executed. If you want to whitelist transforms for a project, copy default.config.ts to <project root>/codemod.config.ts and remove any transforms you don't want.
+By default, all transforms will be executed. If you want to whitelist transforms for a project, copy default.config.ts to your_project_root/codemod.config.ts and remove any transforms you don't want.
 
 ## Shoutout
 
