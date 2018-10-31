@@ -8,6 +8,10 @@ export default {
     },
   },
   transforms: {
-    use: ['AddBuiltInAngularTypes', 'AddBuiltInAngularTypesNgInject'],
+    use: [
+      'AddBuiltInAngularTypes',
+      'AddBuiltInAngularTypesNgInject',
+      'ReplaceNgInjectWith$inject',
+    ],
   },
 };

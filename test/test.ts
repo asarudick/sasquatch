@@ -4,9 +4,12 @@ export class Foo {
     $timeout: ng.ITimeoutService,
     $window: ng.IWindowService,
     $q: ng.IQService,
-  ) {}
-}
+  ) {
+  }
 
-function Bar($rootScope: ng.IRootScopeService) {
-  'ngInject';
+  static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
 }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }

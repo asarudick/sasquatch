@@ -1,4 +1,4 @@
-import services from '../data/services';
+import services from '../data/angular-services';
 
 export default (sources, options) => {
   sources.forEach(source => {

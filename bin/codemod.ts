@@ -1,10 +1,10 @@
 #!/usr/bin/env ts-node
-import Transformer from './transformer';
+import Transformer from '../lib/transformer';
 import * as meow from 'meow';
 import * as glob from 'glob';
 import * as ora from 'ora';
 import * as path from 'path';
-import defaultConfig from './default.config';
+import defaultConfig from '../lib/default.config';
 
 import chalk from 'chalk';
 

@@ -1,10 +1,27 @@
 {
   "name": "codemod",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "cli.ts",
-  "author": "",
+  "author": {
+    "name": "Asa Rudick",
+    "url": "https://asarudick.com"
+  },
+  "bin": "./bin/index.js",
+  "repository": "github:asarudick/codemod",
   "license": "ISC",
+  "keywords": [
+    "typescript",
+    "codemod",
+    "technical debt",
+    "ast",
+    "early warning system",
+    "transform",
+    "tool",
+    "clean"
+  ],
+  "bugs": "https://github.com/asarudick/codemod/issues/",
+  "homepage": "https://github.com/asarudick/codemod/",
   "dependencies": {
     "@types/node": "^10.12.0",
     "chalk": "^2.4.1",
@@ -12,7 +29,9 @@
     "meow": "^5.0.0",
     "ora": "^3.0.0",
     "ts-node": "^7.0.1",
-    "ts-simple-ast": "^17.1.0",
+    "ts-simple-ast": "^17.1.0"
+  },
+  "devDependencies": {
     "typescript": "^3.1.3"
   }
 }
