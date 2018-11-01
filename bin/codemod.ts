@@ -12,16 +12,18 @@ async function main() {
   let config = defaultConfig;
 
   try {
-    config = await import(path.join(process.cwd(), '/codemod.config.ts'));
+    config = await import(path.join(process.cwd(), '/sasquatch.config.ts'));
   } catch (e) {
     console.log(
-      chalk.yellow('Unable to locate codemod.config.ts file. Using defaults.'),
+      chalk.yellow(
+        'Unable to locate sasquatch.config.ts file. Using defaults.',
+      ),
     );
   }
 
   const cli = meow(`
     Usage
-  	  $ codemod <file|glob>
+  	  $ sasquatch <file|glob>
   `);
 
   const files = glob.sync(cli.input[0]);
