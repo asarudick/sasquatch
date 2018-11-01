@@ -2,4 +2,4 @@
 
 // All typescript from here.
 require('ts-node/register');
-require('./codemod');
+require('./sasquatch');
