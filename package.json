@@ -7,7 +7,9 @@
     "name": "Asa Rudick",
     "url": "https://asarudick.com"
   },
-  "bin": "./bin/index.js",
+  "bin": {
+    "sasquatch": "./bin/index.js"
+  },
   "repository": "github:asarudick/sasquatch",
   "license": "ISC",
   "keywords": [
