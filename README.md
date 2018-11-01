@@ -4,9 +4,7 @@ A configurable code modifier for typescript and friends. Can transform entire co
 
 ## Installation
 
-- Clone this repo
-- Install dependencies: `npm i`
-- Install globally: `npm i -g`
+- Install globally: `npm i -g sasquatch`
 
 ## Usage
 
