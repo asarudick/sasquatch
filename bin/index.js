@@ -6,4 +6,5 @@ const path = require('path');
 require('ts-node').register({
   project: path.join(appRootPath.toString(), 'tsconfig.json'),
 });
+console.log(path.join(appRootPath.toString(), 'tsconfig.json'));
 require('./sasquatch');
