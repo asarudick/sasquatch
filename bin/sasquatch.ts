@@ -1,4 +1,3 @@
-#!/usr/bin/env ts-node
 import Transformer from '../lib/transformer';
 import * as meow from 'meow';
 import * as glob from 'glob';
@@ -35,7 +34,8 @@ async function main() {
   const spinner = ora(
     chalk.green(`Applying transforms to ${files.length} files...`),
   ).start();
-  let errors = [];
+
+  let errors: any[] = [];
 
   files.forEach(file => {
     spinner.text = file;
