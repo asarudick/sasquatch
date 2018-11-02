@@ -4,13 +4,15 @@ const path = require('path');
 
 const options = {
   compilerOptions: {
-    lib: ['es2015', 'es2016', 'es2017'],
     allowSyntheticDefaultImports: true,
+    emitDecoratorMetadata: true,
+    experimentalDecorators: true,
+    lib: ['es2015', 'es2016', 'es2017'],
     module: 'commonjs',
     moduleResolution: 'node',
     skipLibCheck: true,
-    experimentalDecorators: true,
-    emitDecoratorMetadata: true,
+    target: 'es6',
+    types: ['node'],
   },
 };
 
