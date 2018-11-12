@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/asarudick/sasquatch.svg?branch=master)](https://travis-ci.org/<github username>/<repo name>)
+![Build Status](https://travis-ci.org/asarudick/sasquatch.svg?branch=master)(https://travis-ci.org/asarudick/sasquatch)
 
 # sasquatch
 
