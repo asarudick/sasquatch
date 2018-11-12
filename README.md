@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/asarudick/sasquatch.svg?branch=master)](https://travis-ci.org/<github username>/<repo name>)
+
 # sasquatch
 
 A configurable code modifier for typescript and friends. Can transform entire codebases to enforce better coding practices, eliminate tech debt in one fell swoop, and catch bad code before it is committed.
