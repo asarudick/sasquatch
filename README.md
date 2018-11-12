@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/asarudick/sasquatch.svg?branch=master)](https://travis-ci.org/asarudick/sasquatch)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/asarudick/sasquatch)
 
 # sasquatch
 
