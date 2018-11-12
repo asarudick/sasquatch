@@ -7,7 +7,7 @@ import defaultConfig from '../lib/default.config';
 
 import chalk from 'chalk';
 
-async function main() {
+export async function run() {
   let config = defaultConfig;
 
   try {
@@ -58,5 +58,3 @@ async function main() {
     });
   }
 }
-
-main();

@@ -14,8 +14,10 @@ const options = {
     target: 'es6',
     types: ['node'],
   },
+  transpileOnly: true,
+  ignore: false,
 };
 
 // All typescript from here.
 require('ts-node').register(options);
-require('./sasquatch');
+require('./sasquatch').run();
