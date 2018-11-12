@@ -3,7 +3,7 @@ coverage/
 .sass-cache/
 .idea/
 .tmp/
-dist/
+lib/
 .depfile
 .DS_Store
 npm-debug.log

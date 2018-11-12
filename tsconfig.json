@@ -1,12 +1,19 @@
 {
+  "files": ["./src/transformer.ts", "./bin/sasquatch.ts"],
+  "include": ["./src/**/*.ts", "./bin/**/*.ts"],
+  "exclude": ["./test/**/*.*"],
   "compilerOptions": {
-    "lib": ["es2015", "es2016", "es2017"],
+    "lib": ["ES2015", "ES2016", "ES2017"],
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "target": "es5"
-  }
+    "target": "es6",
+    "types": ["node"],
+    "outDir": "./lib",
+    "declaration": true
+  },
+  "ignore": "false"
 }

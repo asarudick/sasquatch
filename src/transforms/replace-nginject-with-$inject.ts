@@ -46,7 +46,7 @@ export default (sources, options) => {
         ngInject.remove();
 
         const arr = constructor.getParameters().map(param => param.getName());
-        // console.log(constructor);
+
         const prop = c.addProperty({
           isStatic: true,
           name: '$inject',

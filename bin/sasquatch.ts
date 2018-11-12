@@ -1,13 +1,14 @@
-import Transformer from '../lib/transformer';
+#!/usr/bin/env node
+import Transformer from '../src/transformer';
 import * as meow from 'meow';
 import * as glob from 'glob';
 import * as ora from 'ora';
 import * as path from 'path';
-import defaultConfig from '../lib/default.config';
+import defaultConfig from '../src/default.config';
 
 import chalk from 'chalk';
 
-export async function run() {
+async function run() {
   let config = defaultConfig;
 
   try {
@@ -58,3 +59,5 @@ export async function run() {
     });
   }
 }
+
+run();

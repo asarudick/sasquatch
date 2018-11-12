@@ -1,6 +1,6 @@
 {
   "name": "sasquatch",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "./bin/index.js",
   "author": {
@@ -8,7 +8,7 @@
     "url": "https://asarudick.com"
   },
   "bin": {
-    "sasquatch": "./bin/index.js"
+    "sasquatch": "./lib/bin/sasquatch.js"
   },
   "repository": "github:asarudick/sasquatch",
   "license": "ISC",
@@ -24,7 +24,8 @@
     "clean"
   ],
   "scripts": {
-    "start": "node ./bin/index.js"
+    "start": "node ./bin/sasquatch.js",
+    "build": "tsc -p \"./tsconfig.json\""
   },
   "bugs": "https://github.com/asarudick/sasquatch/issues/",
   "homepage": "https://github.com/asarudick/sasquatch/",
