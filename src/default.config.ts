@@ -9,9 +9,16 @@ export default {
   },
   transforms: {
     use: [
-      'AddBuiltInAngularTypes',
-      'AddBuiltInAngularTypesNgInject',
-      'ReplaceNgInjectWith$inject',
+      // 'AddBuiltInAngularTypes',
+      // 'AddBuiltInAngularTypesNgInject',
+      // 'ReplaceNgInjectWith$inject',
     ],
+  },
+  analyzers: {
+    use: {
+      LongFunction: {
+        maxLength: 25,
+      },
+    },
   },
 };

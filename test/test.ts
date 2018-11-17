@@ -5,6 +5,38 @@ export class Foo {
     $window: ng.IWindowService,
     $q: ng.IQService,
   ) {
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+    'a';
+    'b';
+
+    if (true) {
+      'wobbles';
+    }
   }
 
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];

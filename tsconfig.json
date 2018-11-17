@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "target": "es6",
+    "target": "esnext",
     "types": ["node"],
     "outDir": "./lib",
     "declaration": true

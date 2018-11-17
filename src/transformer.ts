@@ -1,5 +1,6 @@
 import { Project } from 'ts-simple-ast';
 import * as Transforms from './transforms';
+import * as Analyzers from './analyzers';
 import config from './default.config';
 
 export default (
