@@ -1,4 +1,4 @@
-import AnalysisReport from '../AnalysisReport';
+import AnalysisReport from '../reporting/AnalysisReport';
 import * as path from 'path';
 
 export default (sources, options) => {
@@ -27,7 +27,6 @@ export default (sources, options) => {
 
     const longFunctions = functions.filter(f => {
       const length = f.getEndLineNumber() - f.getStartLineNumber();
-      console.log(length);
       return length > options.maxLength;
     });
 

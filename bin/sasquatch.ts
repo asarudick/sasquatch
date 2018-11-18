@@ -15,7 +15,7 @@ const configPath = path.join(process.cwd(), '/sasquatch.config.ts');
 class Cli {
   private config;
 
-  run() {
+  async run() {
     const cli = meow(`
       Usage
     	  $ sasquatch <file|glob>
@@ -27,7 +27,7 @@ class Cli {
       console.log(chalk.red(ErrorMessage.NoFilesSpecified));
     }
 
-    this.config = this.loadConfig();
+    this.config = await this.loadConfig();
 
     this.transform(files);
     this.analyze(files);

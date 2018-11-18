@@ -15,6 +15,9 @@ export default {
     ],
   },
   analyzers: {
+    reporting: {
+      maxLength: 25,
+    },
     use: {
       LongFunction: {
         maxLength: 25,
