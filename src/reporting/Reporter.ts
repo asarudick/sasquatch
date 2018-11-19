@@ -3,6 +3,7 @@ import Report from './Report';
 
 export default class Reporter {
   constructor(private reports: Report[], private options) {}
+
   report(out: Function) {
     for (const report of this.reports) {
       out(`

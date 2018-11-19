@@ -1,37 +1,42 @@
 import * as fs from 'fs';
 const bufferSize = 64;
 
-export function readSection(path, start, end) {
+function* readLine(file) {
   const buffer = Buffer.alloc(bufferSize, '');
-  let currentLine = 1;
-  const lines = [];
+  let remainder = '';
 
-  // Open file synchronously
-  const file = fs.openSync(path, 'r');
-
-  while (currentLine <= end) {
+  while (true) {
     fs.readSync(file, buffer, 0, bufferSize, null);
     const str = buffer.toString();
     const bufferLines = str.split('\n');
-
-    // Append end of last string segment.
-    if (lines.length) {
-      lines[lines.length - 1] += bufferLines.shift();
-      // Previous segment turned into a line.
-      currentLine++;
-    }
-
+    yield remainder + bufferLines.shift();
+    remainder = bufferLines.pop();
     for (const line of bufferLines) {
-      if (currentLine >= start && currentLine <= end) {
-        lines.push(line);
-      }
-      // Eager increment. Last segment will get a decrement to nullify its
-      // increment.
-      currentLine++;
+      yield line;
     }
-    // Last segment may not be a line.
-    currentLine--;
   }
+}
+
+export function readSection(path, start, end) {
+  let currentLine = 1;
+  const result = [];
+
+  // Open file synchronously
+  const file = fs.openSync(path, 'r');
+  const lineReader = readLine(file);
+
+  // Seek to start.
+  while (currentLine < start) {
+    lineReader.next();
+    currentLine++;
+  }
+
+  // Read until end.
+  while (currentLine <= end) {
+    result.push(lineReader.next().value);
+    currentLine++;
+  }
+
   fs.closeSync(file);
-  return lines;
+  return result;
 }
