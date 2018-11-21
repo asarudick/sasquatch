@@ -7,7 +7,8 @@ export default class Reporter {
   report(out: Function) {
     for (const report of this.reports) {
       out(`
-${report.message}
+Code Smell: ${report.message}
+File: ${report.file}
 Lines: ${report.start} - ${report.end}
 ------------------------------
 ${readSection(

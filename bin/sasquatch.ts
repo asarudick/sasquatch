@@ -12,83 +12,84 @@ import defaultConfig from '../src/default.config';
 
 const configPath = path.join(process.cwd(), '/sasquatch.config.ts');
 
+function decorate(fn) {
+  return function(target, name, descriptor) {
+    const original = descriptor.value;
+
+    if (typeof original !== 'function') {
+      return descriptor;
+    }
+
+    descriptor.value = function(...args) {
+      fn(() => original.apply(this, args), args);
+    };
+  };
+}
+
+function report(prefix) {
+  return decorate((original, { files }) => {
+    const spinner = ora(chalk.green(`${prefix}...`)).start();
+
+    const errors: any[] = original();
+
+    if (errors.length) {
+      spinner.fail(`Errors:`);
+      errors.forEach(error => {
+        console.log(chalk.red(`  ${error.file}: ${error.message}`));
+      });
+      return;
+    }
+
+    spinner.succeed(chalk.green(`${prefix}...done.`));
+  });
+}
+
 class Cli {
   private config;
+  private files;
 
-  async run() {
+  public async run() {
     const cli = meow(`
       Usage
     	  $ sasquatch <file|glob>
     `);
 
-    const files = glob.sync(cli.input[0]);
+    this.files = glob.sync(cli.input[0]);
 
-    if (!files) {
+    if (!this.files) {
       console.log(chalk.red(ErrorMessage.NoFilesSpecified));
     }
 
     this.config = await this.loadConfig();
 
-    this.transform(files);
-    this.analyze(files);
+    this.transform(this.files);
+    this.analyze(this.files);
   }
 
+  @report('Transform')
   transform(files) {
-    const spinner = ora(
-      chalk.green(`Transformed ${files.length} files...`),
-    ).start();
-
-    let errors: any[] = [];
-
-    files.forEach(file => {
-      spinner.text = file;
-
-      try {
-        Transformer(file, this.config.options, this.config.transforms);
-      } catch (e) {
-        errors.push({ file, message: e.message });
-      }
-    });
-
-    spinner.succeed(
-      chalk.green(`Transformed ${files.length - errors.length} files!`),
-    );
-
-    if (errors.length) {
-      console.log(chalk.red(`Error transforming ${errors.length} files:`));
-      errors.forEach(error => {
-        console.log(chalk.red(`  ${error.file}: ${error.message}`));
-      });
-    }
+    return files
+      .map(file => {
+        try {
+          Transformer(file, this.config.options, this.config.transforms);
+        } catch (e) {
+          return { file, message: e.message };
+        }
+      })
+      .filter(i => i);
   }
 
+  @report('Analyze')
   analyze(files) {
-    const errors = [];
-
-    const spinner = ora(
-      chalk.green(`Analyzing ${files.length} files...`),
-    ).start();
-
-    files.forEach(file => {
-      spinner.text = file;
-
-      try {
-        Analyzer(file, this.config.analyzers);
-      } catch (e) {
-        errors.push({ file, message: e.message });
-      }
-    });
-
-    spinner.succeed(
-      chalk.green(`Analyzed ${files.length - errors.length} files!`),
-    );
-
-    if (errors.length) {
-      console.log(chalk.red(`Error analyzing ${errors.length} files:`));
-      errors.forEach(error => {
-        console.log(chalk.red(`  ${error.file}: ${error.message}`));
-      });
-    }
+    return files
+      .map(file => {
+        try {
+          Analyzer(file, this.config.analyzers);
+        } catch (e) {
+          return { file, message: e.message };
+        }
+      })
+      .filter(i => i);
   }
 
   async loadConfig() {

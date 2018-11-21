@@ -33,8 +33,10 @@ export default (sources, options) => {
     return longFunctions.map(
       f =>
         new AnalysisReport(
-          `Long Function: ${f.getEndLineNumber() -
-            f.getStartLineNumber()} lines.`,
+          `Long Function (${f.getEndLineNumber() -
+            f.getStartLineNumber()} lines exceeds ${
+            options.maxLength
+          } line maximum)`,
           path.relative(process.cwd(), f.sourceFile.compilerNode.fileName),
           f.getStartLineNumber(),
           f.getEndLineNumber(),
