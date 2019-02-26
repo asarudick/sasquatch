@@ -31,6 +31,9 @@ export default {
       MethodCount: {
         max: 3,
       },
+      ReturnCount: {
+        max: 3,
+      },
     },
   },
 };

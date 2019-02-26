@@ -41,7 +41,12 @@ export class Foo {
   foo() {}
   bar() {}
   woo() {}
-  boo() {}
+  boo() {
+    return;
+    return;
+    return;
+    return;
+  }
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
 }
 //
