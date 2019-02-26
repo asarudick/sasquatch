@@ -46,6 +46,7 @@ export class Foo {
     return;
     return;
     return;
+    'f' || true || false || true || false || true || false;
   }
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
 }

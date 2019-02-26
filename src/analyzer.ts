@@ -1,4 +1,4 @@
-import { Project } from 'ts-simple-ast';
+import { Project } from 'ts-morph';
 import * as Analyzers from './analyzers';
 import config from './default.config';
 import chalk from 'chalk';

@@ -1,4 +1,4 @@
-import { IndentationText, QuoteKind } from 'ts-simple-ast';
+import { IndentationText, QuoteKind } from 'ts-morph';
 
 export default {
   options: {
@@ -33,6 +33,9 @@ export default {
       },
       ReturnCount: {
         max: 3,
+      },
+      ComplexLogic: {
+        max: 4,
       },
     },
   },

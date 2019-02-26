@@ -1,4 +1,4 @@
-import { SyntaxKind } from 'ts-simple-ast';
+import { SyntaxKind } from 'ts-morph';
 import * as path from 'path';
 import AnalysisReport from '../reporting/AnalysisReport';
 

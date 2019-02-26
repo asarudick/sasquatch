@@ -19,4 +19,4 @@ By default, all transforms will be executed. If you want to whitelist transforms
 
 ## Shoutout
 
-This project heavily depends on https://dsherret.github.io/ts-simple-ast/, so huge shoutout to dsherret for his work there and thorough documentation.
+This project heavily depends on https://dsherret.github.io/ts-morph/, so huge shoutout to dsherret for his work there and thorough documentation.
