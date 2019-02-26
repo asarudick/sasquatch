@@ -38,7 +38,10 @@ export class Foo {
       'wobbles';
     }
   }
-
+  foo() {}
+  bar() {}
+  woo() {}
+  boo() {}
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
 }
 //

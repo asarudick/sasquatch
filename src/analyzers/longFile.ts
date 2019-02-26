@@ -5,7 +5,7 @@ export default function*(sources, options) {
   for (let source of sources) {
     const text = source.getFullText();
     const length = text.split('\n').length;
-    // Yield a new report for each long function.
+    // Yield a new report for each long file.
     if (length > options.max) {
       yield new AnalysisReport(
         `File Length (${length} lines exceeds ${

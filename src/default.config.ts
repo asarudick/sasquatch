@@ -28,6 +28,9 @@ export default {
       LongFile: {
         max: 200,
       },
+      MethodCount: {
+        max: 3,
+      },
     },
   },
 };

@@ -32,7 +32,7 @@ export default function*(sources, options) {
       return f.getParameters().length > options.max;
     });
 
-    // Yield a new report for each long function.
+    // Yield a new report for each function with too many arguments.
     for (let f of excessiveParams) {
       yield new AnalysisReport(
         `Argument Count (${f.getParameters().length} arguments exceeds ${
