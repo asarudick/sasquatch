@@ -1,2 +1,2 @@
 export { default as LongFunction } from './longFunction';
-export { default as ExcessiveParameters } from './excessiveParameters';
+export { default as ArgumentCount } from './argumentCount';

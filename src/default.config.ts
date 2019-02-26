@@ -22,7 +22,7 @@ export default {
       LongFunction: {
         maxLength: 25,
       },
-      ExcessiveParameters: {
+      ArgumentCount: {
         max: 3,
       },
     },

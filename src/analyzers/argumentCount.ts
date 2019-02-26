@@ -35,9 +35,9 @@ export default function*(sources, options) {
     // Yield a new report for each long function.
     for (let f of excessiveParams) {
       yield new AnalysisReport(
-        `Excessive Parameters (${f.getParameters().length} parameters exceeds ${
+        `Argument Count (${f.getParameters().length} arguments exceeds ${
           options.max
-        } parameter maximum)`,
+        } arguments maximum)`,
         path.relative(process.cwd(), f._sourceFile._compilerNode.fileName),
         f.getStartLineNumber(),
         f.getEndLineNumber(),
