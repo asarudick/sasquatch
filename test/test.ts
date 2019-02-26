@@ -45,3 +45,188 @@ export class Foo {
 // function Bar($rootScope: ng.IRootScopeService) {
 //   'ngInject';
 // }
+
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }
+//
+// function Bar($rootScope: ng.IRootScopeService) {
+//   'ngInject';
+// }

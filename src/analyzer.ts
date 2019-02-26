@@ -10,7 +10,6 @@ export default (files: string[], analyzers = config.analyzers) => {
   const sources = project.addExistingSourceFiles(files);
 
   for (const analyzer in analyzers.use) {
-    debugger;
     const t = Analyzers[analyzer];
     const options = analyzers.use[analyzer];
 

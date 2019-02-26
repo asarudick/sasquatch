@@ -25,6 +25,9 @@ export default {
       ArgumentCount: {
         max: 3,
       },
+      LongFile: {
+        max: 200,
+      },
     },
   },
 };
