@@ -28,18 +28,16 @@ export default function*(sources, options) {
     ];
 
     // Filter out functions shorter than threshold.
-    const longFunctions = functions.filter(f => {
-      const length = f.getEndLineNumber() - f.getStartLineNumber();
-      return length > options.maxLength;
+    const excessiveParams = functions.filter(f => {
+      return f.getParameters().length > options.max;
     });
 
     // Yield a new report for each long function.
-    for (let f of longFunctions) {
+    for (let f of excessiveParams) {
       yield new AnalysisReport(
-        `Long Function (${f.getEndLineNumber() -
-          f.getStartLineNumber()} lines exceeds ${
-          options.maxLength
-        } line maximum)`,
+        `Excessive Parameters (${f.getParameters().length} parameters exceeds ${
+          options.max
+        } parameter maximum)`,
         path.relative(process.cwd(), f._sourceFile._compilerNode.fileName),
         f.getStartLineNumber(),
         f.getEndLineNumber(),

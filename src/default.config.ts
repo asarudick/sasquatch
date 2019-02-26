@@ -11,7 +11,7 @@ export default {
     use: [
       // 'AddBuiltInAngularTypes',
       // 'AddBuiltInAngularTypesNgInject',
-      // 'ReplaceNgInjectWith$inject',
+      'ReplaceNgInjectWith$inject',
     ],
   },
   analyzers: {
@@ -21,6 +21,9 @@ export default {
     use: {
       LongFunction: {
         maxLength: 25,
+      },
+      ExcessiveParameters: {
+        max: 3,
       },
     },
   },

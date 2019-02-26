@@ -8,9 +8,9 @@ export default (files: string[], analyzers = config.analyzers) => {
   const project = new Project();
 
   const sources = project.addExistingSourceFiles(files);
-  let reports = [];
 
   for (const analyzer in analyzers.use) {
+    debugger;
     const t = Analyzers[analyzer];
     const options = analyzers.use[analyzer];
 
@@ -18,14 +18,10 @@ export default (files: string[], analyzers = config.analyzers) => {
       console.warn(`${analyzer} analyzer not found.`);
       continue;
     }
+    const reporter = new Reporter(t(sources, options), analyzers.reporting);
 
-    reports = reports.concat(t(sources, options));
+    for (let report of reporter.report()) {
+      console.log(report);
+    }
   }
-
-  // flatten and filter out undefined.
-  // @ts-ignore
-  reports = reports.flat().filter(r => r);
-
-  const reporter = new Reporter(reports, analyzers.reporting);
-  reporter.report(console.log);
 };
