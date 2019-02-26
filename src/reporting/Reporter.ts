@@ -15,7 +15,7 @@ Lines: ${report.start} - ${report.end}
 ${readSection(
         report.file,
         report.start - 2,
-        Math.min(report.end + 2, this.options.maxLength),
+        Math.min(report.end + 2, report.start - 2 + this.options.maxLength),
       ).join('\n')}
 `;
     }
