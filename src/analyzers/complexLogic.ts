@@ -51,6 +51,7 @@ export default function*(sources, options) {
     });
 
     // Yield a new report for each function with too many arguments.
+    // @ts-ignore
     for (let s of complexLogic.flat()) {
       yield new AnalysisReport(
         `Complex Logic (${s.count} logical operators exceeds ${
