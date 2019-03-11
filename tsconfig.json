@@ -2,6 +2,9 @@
   "files": ["./src/transformer.ts", "./bin/sasquatch.ts"],
   "include": ["./src/**/*.ts", "./bin/**/*.ts"],
   "exclude": ["./test/**/*.*"],
+  "paths": {
+    "app/*": ["src/app/*"]
+  },
   "compilerOptions": {
     "lib": ["ES2015", "ES2016", "ES2017"],
     "allowSyntheticDefaultImports": true,
