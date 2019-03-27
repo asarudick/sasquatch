@@ -26,7 +26,7 @@
   "scripts": {
     "start": "npm run build && node ./lib/bin/sasquatch.js",
     "build": "tsc -p \"./tsconfig.json\"",
-    "test": "tsc -p \"./tsconfig.json\"",
+    "test": "npm run build && node ./lib/bin/sasquatch.js -- \"./mock/input.ts\"",
     "debug": "npm run build && node --inspect-brk ./lib/bin/sasquatch.js"
   },
   "bugs": "https://github.com/asarudick/sasquatch/issues/",
@@ -44,6 +44,17 @@
     "typescript": "^3.1.6"
   },
   "devDependencies": {
-    "@types/node": "^10.12.10"
+    "@types/node": "^10.12.10",
+    "ava": "^1.4.0",
+    "lodash": "^4.17.11"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ]
   }
 }

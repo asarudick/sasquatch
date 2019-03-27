@@ -2,30 +2,31 @@ import { IndentationText, QuoteKind } from 'ts-morph';
 import MockPlugin from '../mock/plugin';
 // import { Config } from './classes';
 
-import * as analyzers from './analyzers';
-import * as transforms from './transforms';
+// TODO: Not do this.
+import * as analyzers from '../src/analyzers';
+import * as transforms from '../src/transforms';
 
 const test = {
   plugin: MockPlugin,
   transforms: {
-    use: {},
+    use: [],
   },
   analyzers: {
-    use: {},
+    use: [],
   },
 };
 
 const base = {
   plugin: {
-    analyzers,
-    transforms,
+    analyzers: Object.values(analyzers),
+    transforms: Object.values(transforms),
   },
   transforms: {
-    use: {
-      AddBuiltInAngularTypes: {},
-      AddBuiltInAngularTypesNgInject: {},
-      ReplaceNgInjectWith$inject: {},
-    },
+    use: [
+      'AddBuiltInAngularTypes',
+      'AddBuiltInAngularTypesNgInject',
+      'ReplaceNgInjectWith$inject',
+    ],
   },
   analyzers: {
     reporting: {

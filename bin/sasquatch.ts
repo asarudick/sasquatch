@@ -9,25 +9,13 @@ import Transformer from '../src/transformer';
 import Analyzer from '../src/analyzer';
 import { ErrorMessage } from './ErrorMessage';
 import defaultConfig from '../src/default.config';
+import { Config } from '../src/classes';
+import { decorate } from '../src/util';
 
 const configPath = path.join(process.cwd(), '/sasquatch.config.ts');
 
-function decorate(fn) {
-  return function(target, name, descriptor) {
-    const original = descriptor.value;
-
-    if (typeof original !== 'function') {
-      return descriptor;
-    }
-
-    descriptor.value = function(...args) {
-      fn(() => original.apply(this, args), args);
-    };
-  };
-}
-
 function report(prefix) {
-  return decorate((original, { files }) => {
+  return decorate(original => {
     const spinner = ora(chalk.green(`${prefix}...`)).start();
 
     const errors: any[] = original();
@@ -101,7 +89,7 @@ class Cli {
       console.log(chalk.yellow(ErrorMessage.ConfigNotFound));
     }
 
-    return config || defaultConfig;
+    return new Config(config || defaultConfig);
   }
 }
 new Cli().run();
