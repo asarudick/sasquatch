@@ -1,5 +1,5 @@
 import { IndentationText, QuoteKind } from 'ts-morph';
-import { StandardModule, AngularJSModule } from './modules';
+import { StandardModule, AngularJsModule } from './modules';
 
 export default {
   options: {
@@ -8,5 +8,5 @@ export default {
       quoteKind: QuoteKind.Single,
     },
   },
-  modules: [StandardModule, AngularJSModule],
+  modules: [StandardModule, AngularJsModule],
 };

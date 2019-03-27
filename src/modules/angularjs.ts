@@ -1,7 +1,7 @@
 import { Module } from '../types';
 import * as transforms from '../transforms';
 
-export const AngularJSModule: Module = {
+export const AngularJsModule: Module = {
   plugin: {
     transforms,
   },
