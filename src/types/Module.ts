@@ -2,11 +2,11 @@ import { Plugin } from './Plugin';
 
 export type Module = {
   plugin: Plugin;
-  transforms: {
-    use: any[];
+  transforms?: {
+    use: {};
   };
-  analyzers: {
+  analyzers?: {
     reporting: {};
-    use: any[];
+    use: {};
   };
 };
