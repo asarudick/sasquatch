@@ -16,7 +16,8 @@
     "target": "esnext",
     "types": ["node"],
     "outDir": "./lib",
-    "declaration": true
+    "declaration": true,
+    "declarationDir": "./lib/types"
   },
   "ignore": "false"
 }

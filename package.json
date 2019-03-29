@@ -1,8 +1,9 @@
 {
   "name": "sasquatch",
   "version": "1.0.14",
-  "description": "",
-  "main": "./bin/index.js",
+  "description": "A configurable code modifier for typescript and friends. Can transform entire codebases to enforce better coding practices, eliminate tech debt in one fell swoop, and catch bad code before it is committed.",
+  "main": "./lib/src/index.js",
+  "types": "./lib/types/src/index.d.ts",
   "author": {
     "name": "Asa Rudick",
     "url": "https://asarudick.com"
@@ -44,7 +45,7 @@
     "typescript": "^3.1.6"
   },
   "devDependencies": {
-    "@types/node": "^10.12.10",
+    "@types/node": "^11.12.0",
     "ava": "^1.4.0",
     "lodash": "^4.17.11"
   },
