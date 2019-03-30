@@ -1,7 +1,6 @@
 import { IndentationText, QuoteKind } from 'ts-morph';
 import { StandardModule } from './modules';
-import { AngularJsModule } from 'sasquatch-angularjs';
-// console.log(AngularJsModule);
+
 export default {
   options: {
     manipulationSettings: {
@@ -9,5 +8,5 @@ export default {
       quoteKind: QuoteKind.Single,
     },
   },
-  modules: [StandardModule, AngularJsModule],
+  modules: [StandardModule],
 };
