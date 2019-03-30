@@ -1,6 +1,4 @@
 import { Project } from 'ts-morph';
-import * as Transforms from './transforms';
-import * as Analyzers from './analyzers';
 import { Config } from './classes';
 import defaultConfig from './default.config';
 
@@ -17,7 +15,7 @@ export default (
   const sources = project.addExistingSourceFiles(files);
 
   for (const transform of Object.keys(transforms.use)) {
-    const t = Transforms[transform];
+    const t = config.plugin.transforms[transform];
 
     if (!t) {
       console.warn(`${transform} transform not found.`);

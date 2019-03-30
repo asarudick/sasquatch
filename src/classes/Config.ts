@@ -4,7 +4,10 @@ export class Config {
   constructor(public config) {
     // Simple merge into a single module.
     this.config.module = merge({}, ...this.config.modules);
-    // console.log(this.config.module);
+  }
+
+  get plugin() {
+    return this.config.module.plugin;
   }
 
   get options() {
