@@ -21,13 +21,7 @@ const base = {
     analyzers: Object.values(analyzers),
     transforms: Object.values(transforms),
   },
-  transforms: {
-    use: [
-      'AddBuiltInAngularTypes',
-      'AddBuiltInAngularTypesNgInject',
-      'ReplaceNgInjectWith$inject',
-    ],
-  },
+  transforms: {},
   analyzers: {
     reporting: {
       maxLength: 25,
