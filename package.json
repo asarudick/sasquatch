@@ -1,6 +1,6 @@
 {
   "name": "sasquatch",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A configurable code modifier for typescript and friends. Can transform entire codebases to enforce better coding practices, eliminate tech debt in one fell swoop, and catch bad code before it is committed.",
   "main": "./lib/src/index.js",
   "types": "./lib/types/src/index.d.ts",
