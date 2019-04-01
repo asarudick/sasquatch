@@ -21,13 +21,13 @@ export const StandardModule: Module = {
         maxLength: 25,
       },
       ArgumentCount: {
-        max: 3,
+        max: 7,
       },
       LongFile: {
         max: 200,
       },
       MethodCount: {
-        max: 3,
+        max: 7,
       },
       ReturnCount: {
         max: 3,
