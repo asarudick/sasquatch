@@ -8,5 +8,5 @@ module.exports = {
       quoteKind: QuoteKind.Single,
     },
   },
-  modules: [],
+  modules: [StandardModule],
 };
