@@ -17,7 +17,9 @@
     "types": ["node"],
     "outDir": "./lib",
     "declaration": true,
-    "declarationDir": "./lib/types"
+    "declarationDir": "./lib/types",
+    "esModuleInterop": true,
+    "downlevelIteration": true
   },
   "ignore": "false"
 }

@@ -34,12 +34,14 @@ export default function*(sources, options) {
       return statements
         .filter(
           s =>
+            s.getExpression &&
             s.getExpression() &&
             s.getExpression().getKind() === SyntaxKind.BinaryExpression,
         )
         .map(s => {
           let count = 0;
-          let expression = s.getExpression();
+          let expression = s.getExpression && s.getExpression();
+          if (!expression) return;
           while (expression.getKind() === SyntaxKind.BinaryExpression) {
             count++;
             if (count > options.max) return { statement: s, count };

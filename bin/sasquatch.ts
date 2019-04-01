@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import * as meow from 'meow';
-import * as glob from 'glob';
-import * as ora from 'ora';
+import meow from 'meow';
+import glob from 'glob';
+import ora from 'ora';
 import * as path from 'path';
 import chalk from 'chalk';
 
@@ -12,7 +12,7 @@ import defaultConfig from '../src/default.config';
 import { Config } from '../src/classes';
 import { decorate } from '../src/util';
 
-const configPath = path.join(process.cwd(), '/sasquatch.config.ts');
+const configPath = path.join(process.cwd(), '/sasquatch.config.js');
 
 function report(prefix) {
   return decorate(original => {
@@ -48,7 +48,7 @@ class Cli {
       console.log(chalk.red(ErrorMessage.NoFilesSpecified));
     }
 
-    this.config = await this.loadConfig();
+    this.config = this.loadConfig();
 
     this.transform(this.files);
     this.analyze(this.files);
@@ -63,6 +63,7 @@ class Cli {
         } catch (e) {
           return { file, message: e.message };
         }
+        return;
       })
       .filter(i => i);
   }
@@ -76,16 +77,18 @@ class Cli {
         } catch (e) {
           return { file, message: e.message };
         }
+        return;
       })
       .filter(i => i);
   }
 
-  async loadConfig() {
+  loadConfig() {
     let config;
 
     try {
-      config = await import(configPath);
+      config = require(configPath).default;
     } catch (e) {
+      console.log(e);
       console.log(chalk.yellow(ErrorMessage.ConfigNotFound));
     }
 

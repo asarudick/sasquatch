@@ -1,7 +1,7 @@
-import { IndentationText, QuoteKind } from 'ts-morph';
-import { StandardModule } from './modules';
+const StandardModule = require('./modules');
+const { IndentationText, QuoteKind } = require('ts-morph');
 
-export default {
+module.exports = {
   options: {
     manipulationSettings: {
       indentationText: IndentationText.TwoSpaces,
