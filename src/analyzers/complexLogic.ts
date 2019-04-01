@@ -1,4 +1,5 @@
 import { SyntaxKind } from 'ts-morph';
+import flatten from 'lodash/flatten';
 import * as path from 'path';
 import AnalysisReport from '../reporting/AnalysisReport';
 
@@ -54,7 +55,7 @@ export default function*(sources, options) {
 
     // Yield a new report for each function with too many arguments.
     // @ts-ignore
-    for (let s of complexLogic.flat()) {
+    for (let s of flatten(complexLogic).filter(i => i)) {
       yield new AnalysisReport(
         `Complex Logic (${s.count} logical operators exceeds ${
           options.max
