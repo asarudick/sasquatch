@@ -10,7 +10,7 @@ function* readLine(file) {
     const str = buffer.toString();
     const bufferLines = str.split('\n');
     yield remainder + bufferLines.shift();
-    remainder = bufferLines.pop();
+    remainder = bufferLines.pop() || '';
     for (const line of bufferLines) {
       yield line;
     }
