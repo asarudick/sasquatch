@@ -11,7 +11,7 @@ A configurable code modifier for typescript and friends. Can transform entire co
 
 ## Usage
 
-- sasquatch <file|glob>
+- `sasquatch <file|glob>`
 
 ## Configuration
 
