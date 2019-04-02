@@ -2,7 +2,7 @@ export class Config {
   public config;
   constructor(config) {
     this.config = { ...config };
-    // Simple merge into a single module.
+    // "Simple" merge into a single module.
     this.mergeModules();
   }
 
@@ -12,7 +12,6 @@ export class Config {
     let transforms = {};
     let analyzerConfig = {};
     let transformConfig = {};
-    // console.log('MODULES', this.config.modules);
 
     this.config.modules.forEach(module => {
       if (!module.plugin) return;
@@ -32,9 +31,6 @@ export class Config {
       analyzers: analyzerConfig,
       plugin,
     };
-    // console.log('ANALYZERS', analyzers);
-    // console.log('TRANSFORMS', transforms);
-    // console.log('MODULE', this.config.module);
   }
 
   get plugin() {
