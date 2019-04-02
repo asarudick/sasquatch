@@ -7,7 +7,7 @@ const defaultCfg = new Config(defaultConfig);
 
 export default (files: string[], config: any = defaultCfg) => {
   const { plugin, analyzers } = config.config.module;
-  if (!analyzers) return;
+  if (!analyzers || !analyzers.use) return;
   const project = new Project();
 
   const sources = project.addExistingSourceFiles(files);

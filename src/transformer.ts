@@ -7,7 +7,7 @@ const defaultCfg = new Config(defaultConfig);
 export default (files: string[], config: any = defaultCfg) => {
   const { plugin, transforms } = config.config.module;
   const { options } = config.config;
-  if (!transforms) return;
+  if (!transforms || !transforms.use) return;
   const project = new Project(options);
 
   const sources = project.addExistingSourceFiles(files);
@@ -18,7 +18,6 @@ export default (files: string[], config: any = defaultCfg) => {
       console.warn(`${transform} transform not found.`);
       continue;
     }
-
     t(sources);
   }
 
