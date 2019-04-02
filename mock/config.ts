@@ -1,6 +1,5 @@
 import { IndentationText, QuoteKind } from 'ts-morph';
 import MockPlugin from '../mock/plugin';
-// import { Config } from './classes';
 
 // TODO: Not do this.
 import * as analyzers from '../src/analyzers';
@@ -9,10 +8,10 @@ import * as transforms from '../src/transforms';
 const test = {
   plugin: MockPlugin,
   transforms: {
-    use: [],
+    use: {},
   },
   analyzers: {
-    use: [],
+    use: {},
   },
 };
 
