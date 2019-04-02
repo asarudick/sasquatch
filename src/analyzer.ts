@@ -2,16 +2,18 @@ import { Project } from 'ts-morph';
 import defaultConfig from './default.config';
 import Reporter from './reporting/Reporter';
 import { Config } from './classes';
-const config = new Config(defaultConfig);
 
-export default (files: string[], analyzers = config.analyzers) => {
+const defaultCfg = new Config(defaultConfig);
+
+export default (files: string[], config: any = defaultCfg) => {
+  const { plugin, analyzers } = config.config.module;
   if (!analyzers) return;
   const project = new Project();
 
   const sources = project.addExistingSourceFiles(files);
 
   for (const analyzer of Object.keys(analyzers.use)) {
-    const t = config.plugin.analyzers[analyzer];
+    const t = plugin.analyzers[analyzer];
     const options = analyzers.use[analyzer];
 
     if (!t) {

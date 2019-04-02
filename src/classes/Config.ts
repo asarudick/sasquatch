@@ -1,9 +1,40 @@
-import merge from 'lodash/merge';
-
 export class Config {
-  constructor(public config) {
+  public config;
+  constructor(config) {
+    this.config = { ...config };
     // Simple merge into a single module.
-    this.config.module = merge({}, ...this.config.modules);
+    this.mergeModules();
+  }
+
+  mergeModules() {
+    let plugin = {};
+    let analyzers = {};
+    let transforms = {};
+    let analyzerConfig = {};
+    let transformConfig = {};
+    // console.log('MODULES', this.config.modules);
+
+    this.config.modules.forEach(module => {
+      if (!module.plugin) return;
+      if (module.plugin.analyzers)
+        analyzers = { ...analyzers, ...module.plugin.analyzers };
+      if (module.plugin.transforms)
+        transforms = { ...transforms, ...module.plugin.transforms };
+      if (module.analyzers)
+        analyzerConfig = { ...analyzerConfig, ...module.analyzers };
+      if (module.transforms)
+        transformConfig = { ...transformConfig, ...module.transforms };
+    });
+
+    plugin = { analyzers, transforms };
+    this.config.module = {
+      transforms: transformConfig,
+      analyzers: analyzerConfig,
+      plugin,
+    };
+    // console.log('ANALYZERS', analyzers);
+    // console.log('TRANSFORMS', transforms);
+    // console.log('MODULE', this.config.module);
   }
 
   get plugin() {

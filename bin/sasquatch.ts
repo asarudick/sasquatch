@@ -59,7 +59,7 @@ class Cli {
     return files
       .map(file => {
         try {
-          Transformer(file, this.config.options, this.config.transforms);
+          Transformer(file, this.config);
         } catch (e) {
           return { file, message: e.message };
         }
@@ -73,7 +73,7 @@ class Cli {
     return files
       .map(file => {
         try {
-          Analyzer(file, this.config.analyzers);
+          Analyzer(file, this.config);
         } catch (e) {
           return { file, message: e.message };
         }
