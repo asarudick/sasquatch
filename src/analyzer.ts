@@ -1,5 +1,5 @@
 import { Project } from 'ts-morph';
-import defaultConfig from './default.config.js';
+import defaultConfig from './default.config';
 import Reporter from './reporting/Reporter';
 import { Config } from './classes';
 
