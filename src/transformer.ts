@@ -1,6 +1,6 @@
 import { Project } from 'ts-morph';
 import { Config } from './classes';
-import defaultConfig from './default.config';
+import defaultConfig from './default.config.js';
 
 const defaultCfg = new Config(defaultConfig);
 

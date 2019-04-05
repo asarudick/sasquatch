@@ -8,7 +8,7 @@ import chalk from 'chalk';
 import Transformer from '../src/transformer';
 import Analyzer from '../src/analyzer';
 import { ErrorMessage } from './ErrorMessage';
-import defaultConfig from '../src/default.config';
+import defaultConfig from '../src/default.config.js';
 import { Config } from '../src/classes';
 import { decorate } from '../src/util';
 
