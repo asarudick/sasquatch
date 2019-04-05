@@ -88,7 +88,6 @@ class Cli {
     try {
       config = require(configPath);
     } catch (e) {
-      console.log(e);
       console.log(chalk.yellow(ErrorMessage.ConfigNotFound));
     }
 

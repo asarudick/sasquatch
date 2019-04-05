@@ -1,5 +1,6 @@
 import { SyntaxKind } from 'ts-morph';
 import flatten from 'lodash/flatten';
+import isFunction from 'lodash/isFunction';
 import * as path from 'path';
 import AnalysisReport from '../reporting/AnalysisReport';
 
@@ -22,7 +23,7 @@ export default function*(sources, options) {
     );
 
     // Group together.
-    const functions = [
+    const functions: any[] = [
       ...constructors,
       ...scopedFunctions,
       ...instanceMethods,
@@ -35,13 +36,15 @@ export default function*(sources, options) {
       return statements
         .filter(
           s =>
-            s.getExpression &&
+            s &&
+            isFunction(s.getExpression) &&
             s.getExpression() &&
             s.getExpression().getKind() === SyntaxKind.BinaryExpression,
         )
         .map(s => {
           let count = 0;
-          let expression = s.getExpression && s.getExpression();
+          let expression =
+            s.getExpression && isFunction(s.getExpression) && s.getExpression();
           if (!expression) return;
           while (expression.getKind() === SyntaxKind.BinaryExpression) {
             count++;
@@ -54,7 +57,6 @@ export default function*(sources, options) {
     });
 
     // Yield a new report for each function with too many arguments.
-    // @ts-ignore
     for (let s of flatten(complexLogic).filter(i => i)) {
       yield new AnalysisReport(
         `Complex Logic (${s.count} logical operators exceeds ${
