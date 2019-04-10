@@ -1,9 +1,11 @@
 import { Project } from 'ts-morph';
 import defaultConfig from './default.config';
-import Reporter from './reporting/Reporter';
+import { Summary as Reporter } from './reporters/';
+import { Table as Printer } from './printers/';
 import { Config } from './classes';
 
 const defaultCfg = new Config(defaultConfig);
+const printer = new Printer();
 
 export default (files: string[], config: any = defaultCfg) => {
   const { plugin, analyzers } = config.config.module;
@@ -23,7 +25,8 @@ export default (files: string[], config: any = defaultCfg) => {
     const reporter = new Reporter(t(sources, options), analyzers.reporting);
 
     for (let report of reporter.report()) {
-      console.log(report);
+      printer.add(report);
     }
   }
+  printer.flush();
 };

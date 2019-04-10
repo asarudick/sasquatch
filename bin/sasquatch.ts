@@ -17,6 +17,7 @@ const configPath = path.join(process.cwd(), '/sasquatch.config.js');
 function report(prefix) {
   return decorate(original => {
     const spinner = ora(chalk.green(`${prefix}...`)).start();
+    console.log('\n');
 
     const errors: any[] = original();
 
