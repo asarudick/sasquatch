@@ -1,8 +1,9 @@
 import { Project } from 'ts-morph';
 import defaultConfig from './default.config';
 import { Summary as Reporter } from './reporters/';
-import { Table as Printer } from './printers/';
+import { Base as Printer } from './printers/';
 import { Config } from './classes';
+import { SasquatchConfig } from './types';
 
 const defaultCfg = new Config(defaultConfig);
 const printer = new Printer();
@@ -22,7 +23,7 @@ export default (files: string[], config: any = defaultCfg) => {
       console.warn(`${analyzer} analyzer not found.`);
       continue;
     }
-    const reporter = new Reporter(t(sources, options), analyzers.reporting);
+    const reporter = new Reporter(t(sources, options), config.reporting);
 
     for (let report of reporter.report()) {
       printer.add(report);

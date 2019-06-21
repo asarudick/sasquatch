@@ -48,4 +48,34 @@ export class Config {
   get analyzers() {
     return this.config.module.analyzers;
   }
+
+  get out() {
+    return this.config.out;
+  }
+
+  get reporter() {
+    return this.config.out.reporter;
+  }
+
+  get printer() {
+    return this.config.out.printer;
+  }
+
+  get reporterName() {
+    const keys: string[] = Object.keys(this.reporter);
+    return keys && keys.length && keys[0];
+  }
+
+  get printerName() {
+    const keys: string[] = Object.keys(this.printer);
+    return keys && keys.length && keys[0];
+  }
+
+  get reporterOptions() {
+    return this.reporter[this.reporterName];
+  }
+
+  get printerOptions() {
+    return this.printer[this.printerName];
+  }
 }

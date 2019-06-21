@@ -8,5 +8,12 @@ export const {
       quoteKind: QuoteKind.Single,
     },
   },
+  reporting: {
+    use: {
+      summary: {
+        maxLength: 25,
+      },
+    },
+  },
   modules: [StandardModule],
 };

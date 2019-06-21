@@ -13,9 +13,6 @@ export const StandardModule: Module = {
     analyzers,
   },
   analyzers: {
-    reporting: {
-      maxLength: 25,
-    },
     use: {
       LongFunction: {
         maxLength: 25,

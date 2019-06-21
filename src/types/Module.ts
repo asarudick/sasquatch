@@ -6,7 +6,6 @@ export type Module = {
     use: {};
   };
   analyzers?: {
-    reporting: {};
     use: {};
   };
 };
