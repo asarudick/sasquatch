@@ -27,7 +27,7 @@
   "scripts": {
     "start": "npm run build && node ./lib/bin/sasquatch.js",
     "build": "tsc -p \"./tsconfig.json\"",
-    "test": "npm run build && node ./lib/bin/sasquatch.js -- \"./mock/input.ts\"",
+    "test": "npm run build && node ./lib/bin/sasquatch.js -- \"./mock/input.ts\" \"./src/default.config.js\"",
     "debug": "npm run build && node --inspect-brk ./lib/bin/sasquatch.js"
   },
   "bugs": "https://github.com/asarudick/sasquatch/issues/",
@@ -40,14 +40,14 @@
     "lazy": "^1.0.11",
     "meow": "^5.0.0",
     "ora": "^3.0.0",
-    "ts-morph": "^1.3.2",
     "ts-node": "^7.0.1",
     "lodash": "^4.17.11",
     "typescript": "^3.1.6"
   },
   "devDependencies": {
     "@types/node": "^11.12.0",
-    "ava": "^1.4.0"
+    "ava": "^1.4.0",
+    "ts-morph": "^3.1.0"
   },
   "ava": {
     "compileEnhancements": false,

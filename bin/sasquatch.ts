@@ -12,24 +12,23 @@ import defaultConfig from '../src/default.config';
 import { Config } from '../src/classes';
 import { decorate } from '../src/util';
 
-const configPath = path.join(process.cwd(), '/sasquatch.config.js');
+let configPath = path.join(process.cwd(), '/sasquatch.config.js');
 
 function report(prefix) {
   return decorate(original => {
-    const spinner = ora(chalk.green(`${prefix}...`)).start();
-    console.log('\n');
+    console.log(chalk.green(`${prefix}...`));
 
     const errors: any[] = original();
 
     if (errors.length) {
-      spinner.fail(`Errors:`);
+      console.log(chalk.red(`Errors:`));
       errors.forEach(error => {
         console.log(chalk.red(`  ${error.file}: ${error.message}`));
       });
       return;
     }
 
-    spinner.succeed(chalk.green(`${prefix}...done.`));
+    console.log(chalk.green(`Done.`));
   });
 }
 
@@ -40,22 +39,32 @@ class Cli {
   public async run() {
     const cli = meow(`
       Usage
-    	  $ sasquatch <file|glob>
+    	  $ sasquatch <file|glob> [configfile]
     `);
 
     this.files = glob.sync(cli.input[0]);
 
-    if (!this.files) {
-      console.log(chalk.red(ErrorMessage.NoFilesSpecified));
+    if (!this.files.length) {
+      const file = path.resolve(cli.input[0]);
+      this.files = [];
+      file && this.files.push(file);
     }
 
-    this.config = this.loadConfig();
+    if (!this.files.length) {
+      console.log(
+        chalk.red(`${ErrorMessage.NoFilesSelected} match ${cli.input[0]}`),
+      );
+      return;
+    }
+
+    const cfg = path.resolve(cli.input[1]);
+    this.config = this.loadConfig(cfg);
 
     this.transform(this.files);
     this.analyze(this.files);
   }
 
-  @report('Transform')
+  @report('Transforming')
   transform(files) {
     return files
       .map(file => {
@@ -69,7 +78,7 @@ class Cli {
       .filter(i => i);
   }
 
-  @report('Analyze')
+  @report('Analyzing')
   analyze(files) {
     return files
       .map(file => {
@@ -83,11 +92,11 @@ class Cli {
       .filter(i => i);
   }
 
-  loadConfig() {
-    let config;
+  loadConfig(path: string) {
+    let config: any;
 
     try {
-      config = require(configPath);
+      config = require(path || configPath);
     } catch (e) {
       console.log(chalk.yellow(ErrorMessage.ConfigNotFound));
     }
