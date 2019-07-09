@@ -44,7 +44,7 @@ class Cli {
 
     this.files = glob.sync(cli.input[0]);
 
-    if (!this.files.length) {
+    if (!this.files || !this.files.length) {
       const file = path.resolve(cli.input[0]);
       this.files = [];
       file && this.files.push(file);
@@ -57,7 +57,7 @@ class Cli {
       return;
     }
 
-    const cfg = path.resolve(cli.input[1]);
+    const cfg = cli.input[1] && path.resolve(cli.input[1]);
     this.config = this.loadConfig(cfg);
 
     this.transform(this.files);
