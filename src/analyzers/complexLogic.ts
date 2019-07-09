@@ -1,4 +1,4 @@
-import { SyntaxKind } from 'ts-morph';
+import { SyntaxKind, BinaryExpression, Statement } from 'ts-morph';
 import flatten from 'lodash/flatten';
 import isFunction from 'lodash/isFunction';
 import * as path from 'path';
@@ -32,24 +32,28 @@ export default function*(sources, options) {
 
     // Filter out functions shorter than threshold.
     const complexLogic: any[] = functions.map(f => {
-      const statements = f.getBody().getStatements();
+      const statements: Statement[] = f.getBody().getStatements();
       return statements
         .filter(
           s =>
             s &&
-            isFunction(s.getExpression) &&
-            s.getExpression() &&
-            s.getExpression().getKind() === SyntaxKind.BinaryExpression,
+            isFunction(s.getChildrenOfKind) &&
+            s.getChildrenOfKind(SyntaxKind.BinaryExpression),
         )
         .map(s => {
           let count = 0;
-          let expression =
-            s.getExpression && isFunction(s.getExpression) && s.getExpression();
+          let expression: BinaryExpression =
+            s.getChildrenOfKind &&
+            isFunction(s.getChildrenOfKind) &&
+            s.getLastChildByKind(SyntaxKind.BinaryExpression);
           if (!expression) return;
           while (expression.getKind() === SyntaxKind.BinaryExpression) {
             count++;
             if (count > options.max) return { statement: s, count };
-            expression = expression.getLeft();
+            expression =
+              expression.getLeft &&
+              isFunction(expression.getLeft) &&
+              <BinaryExpression>expression.getLeft();
           }
           return;
         })

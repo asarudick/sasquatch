@@ -1,11 +1,3 @@
-import { IndentationText, QuoteKind } from 'ts-morph';
-declare const _default: {
-  options: {
-    manipulationSettings: {
-      indentationText: IndentationText;
-      quoteKind: QuoteKind;
-    };
-  };
-  modules: import('./types/Module').Module[];
-};
+import { SasquatchConfig } from './types';
+declare const _default: SasquatchConfig;
 export default _default;
