@@ -58,7 +58,7 @@ class Cli {
     }
 
     const cfg = cli.input[1] && path.resolve(cli.input[1]);
-    this.config = this.loadConfig(cfg);
+    this.config = await this.loadConfig(cfg);
 
     this.transform(this.files);
     this.analyze(this.files);
@@ -92,13 +92,16 @@ class Cli {
       .filter(i => i);
   }
 
-  loadConfig(path: string) {
+  async loadConfig(path: string) {
     let config: any;
 
+    const finalPath = path || configPath;
+
     try {
-      config = require(path || configPath);
+      config = (await import(finalPath)).default;
+      console.log(chalk.green(`Using ${finalPath}`));
     } catch (e) {
-      console.log(chalk.yellow(ErrorMessage.ConfigNotFound));
+      console.log(`Error importing ${finalPath}: e.message`);
     }
 
     return new Config(config || defaultConfig);
