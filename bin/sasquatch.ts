@@ -101,7 +101,7 @@ class Cli {
       config = (await import(finalPath)).default;
       console.log(chalk.green(`Using ${finalPath}`));
     } catch (e) {
-      console.log(`Error importing ${finalPath}: e.message`);
+      console.log(`Error importing ${finalPath}: ${e.message}`);
     }
 
     return new Config(config || defaultConfig);
