@@ -8,9 +8,10 @@ export class Summary implements Reporter {
     for (const report of this.stream) {
       if (!report) continue;
       yield {
-        message: `${report.file} \t (${report.start}, ${report.end})\t ${
-          report.message
-        }`,
+        message:
+          `${report.message}`.padEnd(75) +
+          `(${report.start}, ${report.end})`.padEnd(20) +
+          `${report.file}`,
         report,
       };
     }

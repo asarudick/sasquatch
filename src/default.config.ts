@@ -9,6 +9,28 @@ export default {
       quoteKind: QuoteKind.Single,
     },
   },
+  analyzers: {
+    use: {
+      LongFunction: {
+        maxLength: 25,
+      },
+      ArgumentCount: {
+        max: 3,
+      },
+      LongFile: {
+        max: 200,
+      },
+      MethodCount: {
+        max: 3,
+      },
+      ReturnCount: {
+        max: 3,
+      },
+      ComplexLogic: {
+        max: 4,
+      },
+    },
+  },
   out: {
     reporter: {
       summary: {

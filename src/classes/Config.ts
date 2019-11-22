@@ -10,8 +10,8 @@ export class Config {
     let plugin = {};
     let analyzers = {};
     let transforms = {};
-    let analyzerConfig = {};
-    let transformConfig = {};
+    let defaultAnalyzerConfig = {};
+    let defaultTransformConfig = {};
 
     this.config.modules.forEach(module => {
       if (!module.plugin) return;
@@ -19,16 +19,26 @@ export class Config {
         analyzers = { ...analyzers, ...module.plugin.analyzers };
       if (module.plugin.transforms)
         transforms = { ...transforms, ...module.plugin.transforms };
+
+      // Determines which analyzers and transforms to use.
+      // Also, only pertains to the DEFAULT config for each module.
       if (module.analyzers)
-        analyzerConfig = { ...analyzerConfig, ...module.analyzers };
+        defaultAnalyzerConfig = {
+          ...defaultAnalyzerConfig,
+          ...module.analyzers,
+        };
       if (module.transforms)
-        transformConfig = { ...transformConfig, ...module.transforms };
+        defaultTransformConfig = {
+          ...defaultTransformConfig,
+          ...module.transforms,
+        };
     });
 
     plugin = { analyzers, transforms };
+
     this.config.module = {
-      transforms: transformConfig,
-      analyzers: analyzerConfig,
+      transforms: this.config.transforms || defaultTransformConfig,
+      analyzers: this.config.analyzers || defaultAnalyzerConfig,
       plugin,
     };
   }
