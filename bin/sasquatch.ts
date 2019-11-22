@@ -44,7 +44,7 @@ class Cli {
 
     this.files = glob.sync(cli.input[0]);
 
-    if (!this.files || !this.files.length) {
+    if (!this.files?.length) {
       const file = path.resolve(cli.input[0]);
       this.files = [];
       file && this.files.push(file);
@@ -95,7 +95,7 @@ class Cli {
   async loadConfig(path: string) {
     let config: any;
 
-    const finalPath = path || configPath;
+    const finalPath = path ?? configPath;
 
     try {
       config = (await import(finalPath)).default;
@@ -104,7 +104,7 @@ class Cli {
       console.log(`Error importing ${finalPath}: ${e.message}`);
     }
 
-    return new Config(config || defaultConfig);
+    return new Config(config ?? defaultConfig);
   }
 }
 new Cli().run();
