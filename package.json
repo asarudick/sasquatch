@@ -57,5 +57,9 @@
     "require": [
       "ts-node/register/transpile-only"
     ]
+  },
+  "np": {
+    "yarn": false,
+    "contents": "lib"
   }
 }
