@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import meow from 'meow';
 import glob from 'glob';
-import ora from 'ora';
 import * as path from 'path';
 import chalk from 'chalk';
+import commander from 'commander';
+
+import * as commands from './commands';
 
 import Transformer from '../src/transformer';
 import Analyzer from '../src/analyzer';
@@ -32,36 +34,61 @@ function report(prefix) {
   });
 }
 
+
+
 class Cli {
   private config;
   private files;
 
-  public async run() {
-    const cli = meow(`
-      Usage
-    	  $ sasquatch <file|glob> [configfile]
-    `);
+  private setupCommands(program) {
+    program
+    .arguments('<glob> [configfile]')
+    .action(this.defaultCommandAction);
 
-    this.files = glob.sync(cli.input[0]);
+    for (let key in commands) {
+      const command = commands[key];
+
+      // Attaching command properties is done via chaining, so we have to get a reference first.
+      let prompt = program.command(command.command);
+
+      for (let prop in command) {
+        // Already did command.
+        if (prop === 'command') continue;
+        prompt[prop](command[prop]);
+      }
+    }
+  }
+
+  private async defaultCommandAction(glob, configFile) {
+    const fileArg = glob;
+
+    this.files = glob.sync(fileArg);
 
     if (!this.files?.length) {
-      const file = path.resolve(cli.input[0]);
+      const file = path.resolve(fileArg);
       this.files = [];
       file && this.files.push(file);
     }
 
     if (!this.files.length) {
       console.log(
-        chalk.red(`${ErrorMessage.NoFilesSelected} match ${cli.input[0]}`),
+        chalk.red(`${ErrorMessage.NoFilesSelected} match ${fileArg}`),
       );
       return;
     }
 
-    const cfg = cli.input[1] && path.resolve(cli.input[1]);
+    const cfg = configFile && path.resolve(configFile);
     this.config = await this.loadConfig(cfg);
 
     this.transform(this.files);
     this.analyze(this.files);
+  }
+
+  public async run() {
+    const clazz = commander.Command;
+    const program = new commander.Command();
+    this.setupCommands(program);
+    program.parse(process.argv);
   }
 
   @report('Transforming')
