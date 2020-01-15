@@ -1,12 +1,11 @@
-'use strict';
-exports.__esModule = true;
-var modules_1 = require('./modules');
-var ts_morph_1 = require('ts-morph');
-exports['default'] = {
+import { StandardModule, SasquatchConfig } from 'sasquatch';
+import { IndentationText, QuoteKind } from 'ts-morph';
+
+export default {
   options: {
     manipulationSettings: {
-      indentationText: ts_morph_1.IndentationText.TwoSpaces,
-      quoteKind: ts_morph_1.QuoteKind.Single,
+      indentationText: IndentationText.TwoSpaces,
+      quoteKind: QuoteKind.Single,
     },
   },
   analyzers: {
@@ -41,5 +40,5 @@ exports['default'] = {
       base: {},
     },
   },
-  modules: [modules_1.StandardModule],
-};
+  modules: [StandardModule],
+} as SasquatchConfig;
