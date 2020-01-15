@@ -1,4 +1,7 @@
 import inquirer from 'inquirer';
+import fs from 'fs';
+import pkgDir from 'pkg-dir';
+import path from 'path';
 
 const questions = [
   {
@@ -15,8 +18,17 @@ export const init = {
   description: 'Initializes a new sasquatch config.',
   action: async () => {
     const prompt = inquirer.createPromptModule();
+    const { useDefault } = await prompt(questions);
+    try {
+      const dir = await pkgDir(__dirname);
 
-    const answers = await prompt(questions);
-    console.log(answers.useDefault);
+      useDefault &&
+        fs.copyFileSync(
+          path.join(dir, 'src/default.config.js'),
+          './sasquatch.config.js',
+        );
+    } catch (e) {
+      console.error(e);
+    }
   },
 };

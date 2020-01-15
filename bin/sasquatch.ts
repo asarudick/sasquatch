@@ -5,6 +5,8 @@ import * as path from 'path';
 import chalk from 'chalk';
 import commander from 'commander';
 
+import { importTypescript } from './importTypescript';
+
 import * as commands from './commands';
 
 import Transformer from '../src/transformer';
@@ -14,7 +16,7 @@ import defaultConfig from '../src/default.config';
 import { Config } from '../src/classes';
 import { decorate } from '../src/util';
 
-let configPath = path.join(process.cwd(), '/sasquatch.config.js');
+let configPath = path.join(process.cwd(), '/sasquatch.config.ts');
 
 function report(prefix) {
   return decorate(original => {
@@ -41,10 +43,14 @@ class Cli {
   private files;
 
   private setupCommands(program) {
+
+    // Main command.
     program
     .arguments('<glob> [configfile]')
-    .action(this.defaultCommandAction);
+    .action((glob, cfg) => this.defaultCommandAction(glob, cfg));
 
+    // Subcommands.
+    // Loop through all imported commands from the /commands directory.
     for (let key in commands) {
       const command = commands[key];
 
@@ -59,8 +65,8 @@ class Cli {
     }
   }
 
-  private async defaultCommandAction(glob, configFile) {
-    const fileArg = glob;
+  private async defaultCommandAction(globPattern: string, configPath: string) {
+    const fileArg = globPattern;
 
     this.files = glob.sync(fileArg);
 
@@ -77,7 +83,7 @@ class Cli {
       return;
     }
 
-    const cfg = configFile && path.resolve(configFile);
+    const cfg = configPath && path.resolve(configPath);
     this.config = await this.loadConfig(cfg);
 
     this.transform(this.files);
@@ -85,16 +91,15 @@ class Cli {
   }
 
   public async run() {
-    const clazz = commander.Command;
     const program = new commander.Command();
     this.setupCommands(program);
     program.parse(process.argv);
   }
 
   @report('Transforming')
-  transform(files) {
+  transform(files: string[]) {
     return files
-      .map(file => {
+      .map((file: string) => {
         try {
           Transformer(file, this.config);
         } catch (e) {
@@ -106,9 +111,9 @@ class Cli {
   }
 
   @report('Analyzing')
-  analyze(files) {
+  analyze(files: string[]) {
     return files
-      .map(file => {
+      .map((file: string) => {
         try {
           Analyzer(file, this.config);
         } catch (e) {
@@ -125,7 +130,7 @@ class Cli {
     const finalPath = path ?? configPath;
 
     try {
-      config = (await import(finalPath)).default;
+      config = importTypescript(finalPath).default;
       console.log(chalk.green(`Using ${finalPath}`));
     } catch (e) {
       console.log(`Error importing ${finalPath}: ${e.message}`);

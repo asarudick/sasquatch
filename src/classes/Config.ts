@@ -13,8 +13,8 @@ export class Config {
     let defaultAnalyzerConfig = {};
     let defaultTransformConfig = {};
 
-    this.config.modules.forEach(module => {
-      if (!module.plugin) return;
+    this.config.modules?.forEach(module => {
+      if (!module || !module.plugin) return;
       if (module.plugin.analyzers)
         analyzers = { ...analyzers, ...module.plugin.analyzers };
       if (module.plugin.transforms)

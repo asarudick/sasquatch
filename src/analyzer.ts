@@ -8,7 +8,7 @@ import { SasquatchConfig } from './types';
 const defaultCfg = new Config(defaultConfig);
 const printer = new Printer();
 
-export default (files: string[], config: any = defaultCfg) => {
+export default (files: string[] | string, config: any = defaultCfg) => {
   const { plugin, analyzers } = config.config.module;
   if (!analyzers || !analyzers.use) return;
   const project = new Project();
