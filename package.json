@@ -27,7 +27,7 @@
   "scripts": {
     "start": "npm run build && node ./lib/bin/sasquatch.js",
     "build": "tsc -p \"./tsconfig.json\"",
-    "test": "npm run build && node ./lib/bin/sasquatch.js -- \"./mock/input.ts\" \"./src/default.config.js\"",
+    "test": "npm run build && node ./lib/bin/sasquatch.js -- \"./mock/input.ts\" \"./src/default.config.ts\"",
     "debug": "npm run build && node --inspect-brk ./lib/bin/sasquatch.js"
   },
   "bugs": "https://github.com/asarudick/sasquatch/issues/",

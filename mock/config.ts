@@ -20,7 +20,11 @@ const base = {
     analyzers: Object.values(analyzers),
     transforms: Object.values(transforms),
   },
-  transforms: {},
+  transforms: {
+    use: {
+      promiseToAsync: {},
+    },
+  },
   analyzers: {
     reporting: {
       maxLength: 25,

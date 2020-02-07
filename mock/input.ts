@@ -48,7 +48,22 @@ export class Foo {
     return;
     'f' || true || false || true || false || true || false;
   }
+
+  baz() {
+    // this.promiseReturner()
+    //   .then(a => {})
+    //   .catch(e => {})
+    //   .finally(() => {});
+
+    this.promiseReturner().then(a => {});
+  }
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
+
+  promiseReturner() {
+    return new Promise((resolve, reject) => {
+      'a';
+    });
+  }
 }
 //
 // function Bar($rootScope: ng.IRootScopeService) {
