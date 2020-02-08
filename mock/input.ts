@@ -50,11 +50,6 @@ export class Foo {
   }
 
   baz() {
-    // this.promiseReturner()
-    //   .then(a => {})
-    //   .catch(e => {})
-    //   .finally(() => {});
-
     this.promiseReturner().then(a => {});
   }
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
