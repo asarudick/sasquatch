@@ -1,4 +1,4 @@
-import { StandardModule, SasquatchConfig } from 'sasquatch';
+import { StandardModule, SasquatchConfig } from '../src/';
 import { IndentationText, QuoteKind } from 'ts-morph';
 
 export default {

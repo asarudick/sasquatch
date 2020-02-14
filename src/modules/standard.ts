@@ -1,5 +1,6 @@
 import { Module } from '../types';
 import * as analyzers from '../analyzers';
+import * as transforms from '../transforms';
 
 // The 'standard' module. Comes with the most fundamental and basic transforms
 // and analyzers.
@@ -11,6 +12,7 @@ import * as analyzers from '../analyzers';
 export const StandardModule: Module = {
   plugin: {
     analyzers,
+    transforms,
   },
   analyzers: {
     use: {
@@ -32,6 +34,11 @@ export const StandardModule: Module = {
       ComplexLogic: {
         max: 4,
       },
+    },
+  },
+  transforms: {
+    use: {
+      promiseToAsync: {},
     },
   },
 };

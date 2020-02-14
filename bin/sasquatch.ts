@@ -128,7 +128,7 @@ class Cli {
     let config: any;
 
     const finalPath = path ?? configPath;
-
+    
     try {
       config = importTypescript(finalPath).default;
       console.log(chalk.green(`Using ${finalPath}`));

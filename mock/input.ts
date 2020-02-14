@@ -49,8 +49,9 @@ export class Foo {
     'f' || true || false || true || false || true || false;
   }
 
-  baz() {
-    this.promiseReturner().then(a => {});
+  async baz() {
+    const a = await this.promiseReturner();
+    setTimeout(() => {}, 0);
   }
   static $inject: string[] = ['$rootScope', '$timeout', '$window', '$q'];
 
@@ -60,6 +61,18 @@ export class Foo {
     });
   }
 }
+class a {
+  promiseReturner() {
+    return new Promise((resolve, reject) => {
+      'a';
+    });
+  }
+}
+const fn = async () => {
+  const b = new a();
+  await b.promiseReturner()
+  let c = 'something';
+};
 //
 // function Bar($rootScope: ng.IRootScopeService) {
 //   'ngInject';
