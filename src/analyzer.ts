@@ -13,7 +13,7 @@ export default (files: string[] | string, config: any = defaultCfg) => {
   if (!analyzers || !analyzers.use) return;
   const project = new Project();
 
-  const sources = project.addExistingSourceFiles(files);
+  const sources = project.addSourceFilesAtPaths(files);
 
   for (const analyzer of Object.keys(analyzers.use)) {
     const t = plugin.analyzers[analyzer];
