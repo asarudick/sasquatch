@@ -11,7 +11,7 @@ export default (files: string[] | string, config: any = defaultCfg) => {
   if (!transforms || !transforms.use) return;
   const project = new Project(options);
 
-  const sources = project.addExistingSourceFiles(files);
+  const sources = project.addSourceFilesAtPaths(files);
   for (const transform of Object.keys(transforms.use)) {
     const t = plugin.transforms[transform];
 
